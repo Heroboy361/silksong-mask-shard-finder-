@@ -9,12 +9,14 @@
 //   - { type: "quest", flag }                  -> playerData.QuestCompletionData
 //                                                 entry with Data.IsCompleted
 //
-// mapSearch is passed to MapGenie's search box as a best-effort deep link;
-// MapGenie does not publish a documented per-pin URL scheme, so this is not
-// guaranteed to select the exact pin, only to open the correct map.
+// mapGenieId is the numeric marker id on MapGenie's Pharloom map; opening
+// mapgenie.io/hollow-knight-silksong/maps/pharloom?locationIds=<id> jumps
+// straight to that pin. mapSearch is kept as a search-box fallback for any
+// entry that ever loses its id.
 const MASK_SHARDS = [
   {
     id: "mask-shard-1",
+    mapGenieId: "477840",
     number: 1,
     act: 1,
     area: "Bone Bottom",
@@ -26,6 +28,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-2",
+    mapGenieId: "478091",
     number: 2,
     act: 1,
     area: "Wormways",
@@ -37,6 +40,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-3",
+    mapGenieId: "477901",
     number: 3,
     act: 1,
     area: "The Marrow / Deep Docks",
@@ -48,6 +52,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-4",
+    mapGenieId: "477975",
     number: 4,
     act: 1,
     area: "Far Fields",
@@ -59,6 +64,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-5",
+    mapGenieId: "478177",
     number: 5,
     act: 1,
     area: "Shellwood",
@@ -70,6 +76,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-6",
+    mapGenieId: "478233",
     number: 6,
     act: 1,
     area: "Weavenest Atla",
@@ -81,6 +88,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-7",
+    mapGenieId: "478879",
     number: 7,
     act: 2,
     area: "Songclave",
@@ -92,6 +100,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-8",
+    mapGenieId: "478615",
     number: 8,
     act: 2,
     area: "Cogwork Core",
@@ -103,6 +112,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-9",
+    mapGenieId: "478671",
     number: 9,
     act: 2,
     area: "Whispering Vaults",
@@ -114,6 +124,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-10",
+    mapGenieId: "478800",
     number: 10,
     act: 2,
     area: "Hunter's March / Songclave",
@@ -125,6 +136,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-11",
+    mapGenieId: "478841",
     number: 11,
     act: 2,
     area: "Far Fields",
@@ -140,6 +152,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-12",
+    mapGenieId: "479038",
     number: 12,
     act: 2,
     area: "Mount Fay",
@@ -151,6 +164,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-13",
+    mapGenieId: "479001",
     number: 13,
     act: 2,
     area: "The Slab",
@@ -162,6 +176,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-14",
+    mapGenieId: "478849",
     number: 14,
     act: 2,
     area: "Bilewater",
@@ -172,6 +187,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-15",
+    mapGenieId: "479151",
     number: 15,
     act: 2,
     area: "Wisp Thicket",
@@ -182,6 +198,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-16",
+    mapGenieId: "478498",
     number: 16,
     act: 2,
     area: "Blasted Steps",
@@ -193,6 +210,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-17",
+    mapGenieId: "479460",
     number: 17,
     act: 3,
     area: "Brightvein",
@@ -203,6 +221,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-18",
+    mapGenieId: "479194",
     number: 18,
     act: 3,
     area: "Far Fields",
@@ -214,6 +233,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-19",
+    mapGenieId: "479449",
     number: 19,
     act: 3,
     area: "Bellhart",
@@ -224,6 +244,7 @@ const MASK_SHARDS = [
   },
   {
     id: "mask-shard-20",
+    mapGenieId: "479447",
     number: 20,
     act: 3,
     area: "Bellhart",
