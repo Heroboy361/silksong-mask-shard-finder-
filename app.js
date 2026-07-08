@@ -93,9 +93,9 @@ function findQuestEntry(playerData, flag) {
   return savedData.find((entry) => normalize(entry.Name) === normalize(flag));
 }
 
-function isShardCollected(saveData, sceneFlags, shard) {
+function isItemCollected(saveData, sceneFlags, item) {
   const playerData = saveData.playerData || {};
-  const { detect } = shard;
+  const { detect } = item;
 
   switch (detect.type) {
     case "flag":
@@ -117,40 +117,60 @@ function isShardCollected(saveData, sceneFlags, shard) {
   }
 }
 
-function mapGenieUrl(shard) {
+function mapGenieUrl(item) {
   const url = new URL(MAPGENIE_BASE_URL);
-  if (shard.mapGenieId) {
-    url.searchParams.set("locationIds", shard.mapGenieId);
-  } else if (shard.mapSearch) {
-    url.searchParams.set("search", shard.mapSearch);
+  if (item.mapGenieId) {
+    url.searchParams.set("locationIds", item.mapGenieId);
+  } else if (item.mapSearch) {
+    url.searchParams.set("search", item.mapSearch);
   }
   return url.toString();
 }
 
 function mapGenieMissingUrl(results) {
   const missingIds = results
-    .filter((r) => !r.collected && r.shard.mapGenieId)
-    .map((r) => r.shard.mapGenieId);
+    .filter((r) => !r.collected && r.item.mapGenieId)
+    .map((r) => r.item.mapGenieId);
   if (missingIds.length === 0) return null;
   // Join with literal commas (not %2C) to match the URL format MapGenie uses.
   return `${MAPGENIE_BASE_URL}?locationIds=${missingIds.join(",")}`;
+}
+
+// The three collectible categories, each with its own dataset and label.
+const CATEGORIES = [
+  { id: "mask-shards", label: "Mask Shards", items: MASK_SHARDS },
+  { id: "fleas", label: "Lost Fleas", items: FLEAS },
+  { id: "spool-fragments", label: "Spool Fragments", items: SPOOL_FRAGMENTS },
+];
+
+// Parsed save state, kept so switching category tabs re-renders without a
+// re-upload.
+let currentSaveData = null;
+let currentSceneFlags = null;
+let activeCategoryId = CATEGORIES[0].id;
+
+function computeResults(category) {
+  return category.items.map((item) => ({
+    item,
+    collected: isItemCollected(currentSaveData, currentSceneFlags, item),
+  }));
 }
 
 function renderTable(results) {
   const tbody = document.querySelector("#shard-table tbody");
   tbody.innerHTML = "";
 
-  for (const { shard, collected } of results) {
+  for (const { item, collected } of results) {
     const tr = document.createElement("tr");
     tr.className = collected ? "found" : "missing";
 
     tr.innerHTML = `
-      <td class="col-num">${shard.number}</td>
-      <td class="col-act">Act ${shard.act}</td>
-      <td class="col-area">${shard.area}</td>
+      <td class="col-num">${item.number}</td>
+      <td class="col-act">Act ${item.act}</td>
+      <td class="col-area">${item.area}</td>
       <td class="col-name">
-        <div class="shard-name">${shard.name}</div>
-        <div class="shard-desc">${shard.description}</div>
+        <div class="shard-name">${item.name}</div>
+        <div class="shard-desc">${item.description}</div>
       </td>
       <td class="col-status">
         <span class="status-badge ${collected ? "status-found" : "status-missing"}">
@@ -158,20 +178,20 @@ function renderTable(results) {
         </span>
       </td>
       <td class="col-map">
-        <a class="map-link" href="${mapGenieUrl(shard)}" target="_blank" rel="noopener noreferrer">View Map</a>
+        <a class="map-link" href="${mapGenieUrl(item)}" target="_blank" rel="noopener noreferrer">View Map</a>
       </td>
     `;
     tbody.appendChild(tr);
   }
 }
 
-function renderSummary(results) {
+function renderSummary(results, category) {
   const found = results.filter((r) => r.collected).length;
   const total = results.length;
   document.querySelector("#summary").textContent =
-    `${found} / ${total} Mask Shards found`;
+    `${found} / ${total} ${category.label} found`;
   document.querySelector("#progress-bar-fill").style.width =
-    `${(found / total) * 100}%`;
+    total === 0 ? "0%" : `${(found / total) * 100}%`;
 
   const missingLink = document.querySelector("#missing-map-link");
   const missingUrl = mapGenieMissingUrl(results);
@@ -180,6 +200,36 @@ function renderSummary(results) {
     missingLink.classList.remove("hidden");
   } else {
     missingLink.classList.add("hidden");
+  }
+}
+
+function renderActiveCategory() {
+  if (!currentSaveData) return;
+  const category =
+    CATEGORIES.find((c) => c.id === activeCategoryId) || CATEGORIES[0];
+  const results = computeResults(category);
+  renderSummary(results, category);
+  renderTable(results);
+
+  for (const button of document.querySelectorAll(".category-tab")) {
+    button.classList.toggle("active", button.dataset.category === category.id);
+  }
+}
+
+function renderCategoryTabs() {
+  const container = document.querySelector("#category-tabs");
+  container.innerHTML = "";
+  for (const category of CATEGORIES) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "category-tab";
+    button.dataset.category = category.id;
+    button.textContent = category.label;
+    button.addEventListener("click", () => {
+      activeCategoryId = category.id;
+      renderActiveCategory();
+    });
+    container.appendChild(button);
   }
 }
 
@@ -211,14 +261,10 @@ async function handleFile(file) {
       throw new Error("This doesn't look like a Silksong save file.");
     }
 
-    const sceneFlags = extractSceneFlags(saveData);
-    const results = MASK_SHARDS.map((shard) => ({
-      shard,
-      collected: isShardCollected(saveData, sceneFlags, shard),
-    }));
+    currentSaveData = saveData;
+    currentSceneFlags = extractSceneFlags(saveData);
 
-    renderSummary(results);
-    renderTable(results);
+    renderActiveCategory();
     document.querySelector("#results").classList.remove("hidden");
   } catch (error) {
     console.error(error);
@@ -233,6 +279,8 @@ async function handleFile(file) {
 function init() {
   const input = document.querySelector("#file-input");
   const dropzone = document.querySelector("#dropzone");
+
+  renderCategoryTabs();
 
   input.addEventListener("change", () => {
     if (input.files[0]) handleFile(input.files[0]);
