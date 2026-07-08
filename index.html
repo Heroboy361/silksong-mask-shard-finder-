@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silksong Mask Shard Finder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Silksong Mask Shard Finder</h1>
+    <p class="subtitle">
+      Lade deinen Hollow Knight: Silksong Spielstand hoch und sieh sofort,
+      welche der 20 Maskenscherben (Mask Shards) du schon gefunden hast.
+    </p>
+  </header>
+
+  <main>
+    <section id="upload-section">
+      <div id="dropzone">
+        <p><strong>Spielstand hierher ziehen</strong> oder klicken zum Auswählen</p>
+        <p class="hint">
+          Normalerweise unter
+          <code>%userprofile%\AppData\LocalLow\Team Cherry\Hollow Knight Silksong\user1.dat</code>
+          (Windows) — die Datei verlässt deinen Browser nie, alles läuft lokal.
+        </p>
+        <input type="file" id="file-input" accept=".dat,.json" hidden />
+      </div>
+      <p id="error-message" class="error hidden"></p>
+    </section>
+
+    <section id="results" class="hidden">
+      <div id="summary-bar">
+        <span id="summary">0 / 20 Mask Shards found</span>
+        <div class="progress-bar">
+          <div id="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <table id="shard-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Act</th>
+            <th>Area</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Map</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Fan-made tool, not affiliated with Team Cherry. Location data sourced
+      from public Silksong completion guides. Map links open
+      <a href="https://mapgenie.io/hollow-knight-silksong" target="_blank" rel="noopener noreferrer">MapGenie</a>.
+    </p>
+  </footer>
+
+  <script src="vendor/crypto-js.min.js"></script>
+  <script src="data/mask-shards.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
