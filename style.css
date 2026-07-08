@@ -58,17 +58,49 @@ main {
   background: #262636;
 }
 
-#dropzone .hint {
-  color: var(--muted);
-  font-size: 0.85rem;
-  margin-top: 0.75rem;
+#file-info {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
-#dropzone code {
+#file-info h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+
+#file-info p {
+  margin: 0.5rem 0;
+}
+
+#file-info .filepath {
+  margin: 0.75rem 0;
+}
+
+#file-info .hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+#file-info code {
+  display: inline-block;
   background: #00000040;
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
   word-break: break-all;
+  font-size: 0.9rem;
+}
+
+#file-info kbd {
+  background: #00000055;
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  padding: 0.05rem 0.4rem;
+  font-family: inherit;
 }
 
 .error {
