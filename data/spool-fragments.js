@@ -1,3 +1,7 @@
+// Data for all 18 Spool Fragment locations in Hollow Knight: Silksong
+// (the items that increase silk/spool capacity). See data/mask-shards.js
+// for the `detect` schema. `description` is bilingual: { en, de }.
+
 const SPOOL_FRAGMENTS = [
   {
     id: "spool-1",
@@ -6,7 +10,7 @@ const SPOOL_FRAGMENTS = [
     act: 1,
     area: "The Marrow",
     name: "Spool Fragment #1",
-    description: "Fundort-Szene: Bone_11b.",
+    description: { en: "Found in scene: Bone_11b.", de: "Fundort-Szene: Bone_11b." },
     detect: { type: "sceneBool", scene: "Bone_11b", flag: "Silk Spool" },
   },
   {
@@ -16,7 +20,7 @@ const SPOOL_FRAGMENTS = [
     act: 1,
     area: "Far Fields",
     name: "Spool Fragment #2",
-    description: "Fundort-Szene: Bone_East_13.",
+    description: { en: "Found in scene: Bone_East_13.", de: "Fundort-Szene: Bone_East_13." },
     detect: { type: "sceneBool", scene: "Bone_East_13", flag: "Silk Spool" },
   },
   {
@@ -26,7 +30,7 @@ const SPOOL_FRAGMENTS = [
     act: 1,
     area: "Greymoor",
     name: "Spool Fragment #3",
-    description: "Fundort-Szene: Greymoor_02. Benötigt: Cling Grip.",
+    description: { en: "Found in scene: Greymoor_02. Requires: Cling Grip.", de: "Fundort-Szene: Greymoor_02. Benötigt: Cling Grip." },
     detect: { type: "sceneBool", scene: "Greymoor_02", flag: "Silk Spool" },
   },
   {
@@ -36,7 +40,7 @@ const SPOOL_FRAGMENTS = [
     act: 1,
     area: "Mount Fay",
     name: "Spool Fragment #4",
-    description: "Fundort-Szene: Peak_01. Benötigt: Cling Grip.",
+    description: { en: "Found in scene: Peak_01. Requires: Cling Grip.", de: "Fundort-Szene: Peak_01. Benötigt: Cling Grip." },
     detect: { type: "sceneBool", scene: "Peak_01", flag: "Silk Spool" },
   },
   {
@@ -46,7 +50,7 @@ const SPOOL_FRAGMENTS = [
     act: 1,
     area: "Weavenest",
     name: "Spool Fragment #5",
-    description: "Fundort-Szene: Weave_11. Benötigt: Needolin.",
+    description: { en: "Found in scene: Weave_11. Requires: Needolin.", de: "Fundort-Szene: Weave_11. Benötigt: Needolin." },
     detect: { type: "sceneBool", scene: "Weave_11", flag: "Silk Spool" },
   },
   {
@@ -56,7 +60,7 @@ const SPOOL_FRAGMENTS = [
     act: 1,
     area: "Bellhart (Shop)",
     name: "Spool Fragment #6",
-    description: "Save-Flag: PurchasedBelltownSpoolSegment. Benötigt: Save Tipp.",
+    description: { en: "Save flag: PurchasedBelltownSpoolSegment. Requires: Save Tipp.", de: "Save-Flag: PurchasedBelltownSpoolSegment. Benötigt: Save Tipp." },
     detect: { type: "flag", flag: "PurchasedBelltownSpoolSegment" },
   },
   {
@@ -66,7 +70,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Greymoor (Caravan)",
     name: "Spool Fragment #7",
-    description: "Save-Flag: MetCaravanTroupeLeaderGreymoor. Benötigt: 14 Fleas Saved.",
+    description: { en: "Save flag: MetCaravanTroupeLeaderGreymoor. Requires: 14 Fleas Saved.", de: "Save-Flag: MetCaravanTroupeLeaderGreymoor. Benötigt: 14 Fleas Saved." },
     detect: { type: "flag", flag: "MetCaravanTroupeLeaderGreymoor" },
   },
   {
@@ -76,7 +80,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Cogwork Core",
     name: "Spool Fragment #8",
-    description: "Fundort-Szene: Cog_07.",
+    description: { en: "Found in scene: Cog_07.", de: "Fundort-Szene: Cog_07." },
     detect: { type: "sceneBool", scene: "Cog_07", flag: "Silk Spool" },
   },
   {
@@ -86,7 +90,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Whispering Vaults",
     name: "Spool Fragment #9",
-    description: "Fundort-Szene: Library_11b.",
+    description: { en: "Found in scene: Library_11b.", de: "Fundort-Szene: Library_11b." },
     detect: { type: "sceneBool", scene: "Library_11b", flag: "Silk Spool" },
   },
   {
@@ -96,7 +100,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Songclave",
     name: "Spool Fragment #10",
-    description: "Fundort-Szene: Song_19_entrance.",
+    description: { en: "Found in scene: Song_19_entrance.", de: "Fundort-Szene: Song_19_entrance." },
     detect: { type: "sceneBool", scene: "Song_19_entrance", flag: "Silk Spool" },
   },
   {
@@ -106,7 +110,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Underworks",
     name: "Spool Fragment #11",
-    description: "Fundort-Szene: Under_10.",
+    description: { en: "Found in scene: Under_10.", de: "Fundort-Szene: Under_10." },
     detect: { type: "sceneBool", scene: "Under_10", flag: "Silk Spool" },
   },
   {
@@ -116,7 +120,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "The Cradle (Ward)",
     name: "Spool Fragment #12",
-    description: "Fundort-Szene: Ward_01.",
+    description: { en: "Found in scene: Ward_01.", de: "Fundort-Szene: Ward_01." },
     detect: { type: "sceneBool", scene: "Ward_01", flag: "Silk Spool" },
   },
   {
@@ -126,7 +130,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Wish reward (Sherma)",
     name: "Spool Fragment #13",
-    description: "Belohnung aus Wish: Save Sherma. Benötigt: Save Sherma.",
+    description: { en: "Reward from wish: Save Sherma. Requires: Save Sherma.", de: "Belohnung aus Wish: Save Sherma. Benötigt: Save Sherma." },
     detect: { type: "quest", flag: "Save Sherma" },
   },
   {
@@ -136,7 +140,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Deep Docks",
     name: "Spool Fragment #14",
-    description: "Fundort-Szene: Dock_03c.",
+    description: { en: "Found in scene: Dock_03c.", de: "Fundort-Szene: Dock_03c." },
     detect: { type: "sceneBool", scene: "Dock_03c", flag: "Silk Spool" },
   },
   {
@@ -146,7 +150,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "The High Halls",
     name: "Spool Fragment #15",
-    description: "Fundort-Szene: Hang_03_top. Benötigt: Clawline.",
+    description: { en: "Found in scene: Hang_03_top. Requires: Clawline.", de: "Fundort-Szene: Hang_03_top. Benötigt: Clawline." },
     detect: { type: "sceneBool", scene: "Hang_03_top", flag: "Silk Spool" },
   },
   {
@@ -156,7 +160,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Memorium",
     name: "Spool Fragment #16",
-    description: "Fundort-Szene: Arborium_09. Benötigt: Faydown Cloak.",
+    description: { en: "Found in scene: Arborium_09. Requires: Faydown Cloak.", de: "Fundort-Szene: Arborium_09. Benötigt: Faydown Cloak." },
     detect: { type: "sceneBool", scene: "Arborium_09", flag: "Silk Spool" },
   },
   {
@@ -166,7 +170,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Blasted Steps (Grindle)",
     name: "Spool Fragment #17",
-    description: "Save-Flag: purchasedGrindleSpoolPiece. Benötigt: Faydown Cloak.",
+    description: { en: "Save flag: purchasedGrindleSpoolPiece. Requires: Faydown Cloak.", de: "Save-Flag: purchasedGrindleSpoolPiece. Benötigt: Faydown Cloak." },
     detect: { type: "flag", flag: "purchasedGrindleSpoolPiece" },
   },
   {
@@ -176,7 +180,7 @@ const SPOOL_FRAGMENTS = [
     act: 2,
     area: "Songclave (Merchant)",
     name: "Spool Fragment #18",
-    description: "Save-Flag: MerchantEnclaveSpoolPiece. Benötigt: Faydown Cloak.",
+    description: { en: "Save flag: MerchantEnclaveSpoolPiece. Requires: Faydown Cloak.", de: "Save-Flag: MerchantEnclaveSpoolPiece. Benötigt: Faydown Cloak." },
     detect: { type: "flag", flag: "MerchantEnclaveSpoolPiece" },
   },
 ];
