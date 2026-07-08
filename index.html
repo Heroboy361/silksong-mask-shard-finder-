@@ -11,7 +11,9 @@
     <h1>Silksong Mask Shard Finder</h1>
     <p class="subtitle">
       Lade deinen Hollow Knight: Silksong Spielstand hoch und sieh sofort,
-      welche der 20 Maskenscherben (Mask Shards) du schon gefunden hast.
+      welche Maskenscherben (Mask Shards), Flöhe (Lost Fleas) und
+      Spulenfragmente (Spool Fragments) du schon gefunden hast — mit direktem
+      Link zur passenden Stelle auf der MapGenie-Karte.
     </p>
   </header>
 
@@ -45,6 +47,8 @@
     </section>
 
     <section id="results" class="hidden">
+      <div id="category-tabs"></div>
+
       <div id="summary-bar">
         <span id="summary">0 / 20 Mask Shards found</span>
         <div class="progress-bar">
@@ -81,6 +85,8 @@
 
   <script src="vendor/crypto-js.min.js"></script>
   <script src="data/mask-shards.js"></script>
+  <script src="data/fleas.js"></script>
+  <script src="data/spool-fragments.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
