@@ -17,13 +17,28 @@
 
   <main>
     <section id="upload-section">
-      <div id="dropzone">
-        <p><strong>Spielstand hierher ziehen</strong> oder klicken zum Auswählen</p>
-        <p class="hint">
-          Normalerweise unter
-          <code>%userprofile%\AppData\LocalLow\Team Cherry\Hollow Knight Silksong\user1.dat</code>
-          (Windows) — die Datei verlässt deinen Browser nie, alles läuft lokal.
+      <div id="file-info">
+        <h2>Welche Datei muss ich hochladen?</h2>
+        <p>
+          Deine Silksong-Spielstanddatei heißt normalerweise
+          <strong>user1.dat</strong> (bei mehreren Spielständen ggf.
+          <strong>user2.dat</strong>, <strong>user3.dat</strong>, …) und liegt
+          unter Windows/Steam hier:
         </p>
+        <p class="filepath">
+          <code>%userprofile%\AppData\LocalLow\Team Cherry\Hollow Knight Silksong\</code>
+        </p>
+        <p class="hint">
+          Tipp: <kbd>Windows</kbd> + <kbd>R</kbd> drücken, obigen Pfad
+          einfügen und Enter drücken — dann öffnet sich der Ordner direkt.
+          Lade genau diese <strong>.dat</strong>-Datei unten hoch (kein
+          Umbenennen, kein Entpacken nötig). Die Datei verlässt deinen Browser
+          nie — die gesamte Auswertung läuft lokal auf deinem Gerät.
+        </p>
+      </div>
+
+      <div id="dropzone">
+        <p><strong>Spielstand (user1.dat) hierher ziehen</strong> oder klicken zum Auswählen</p>
         <input type="file" id="file-input" accept=".dat,.json" hidden />
       </div>
       <p id="error-message" class="error hidden"></p>
