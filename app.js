@@ -119,8 +119,21 @@ function isShardCollected(saveData, sceneFlags, shard) {
 
 function mapGenieUrl(shard) {
   const url = new URL(MAPGENIE_BASE_URL);
-  if (shard.mapSearch) url.searchParams.set("search", shard.mapSearch);
+  if (shard.mapGenieId) {
+    url.searchParams.set("locationIds", shard.mapGenieId);
+  } else if (shard.mapSearch) {
+    url.searchParams.set("search", shard.mapSearch);
+  }
   return url.toString();
+}
+
+function mapGenieMissingUrl(results) {
+  const missingIds = results
+    .filter((r) => !r.collected && r.shard.mapGenieId)
+    .map((r) => r.shard.mapGenieId);
+  if (missingIds.length === 0) return null;
+  // Join with literal commas (not %2C) to match the URL format MapGenie uses.
+  return `${MAPGENIE_BASE_URL}?locationIds=${missingIds.join(",")}`;
 }
 
 function renderTable(results) {
@@ -159,6 +172,15 @@ function renderSummary(results) {
     `${found} / ${total} Mask Shards found`;
   document.querySelector("#progress-bar-fill").style.width =
     `${(found / total) * 100}%`;
+
+  const missingLink = document.querySelector("#missing-map-link");
+  const missingUrl = mapGenieMissingUrl(results);
+  if (missingUrl) {
+    missingLink.href = missingUrl;
+    missingLink.classList.remove("hidden");
+  } else {
+    missingLink.classList.add("hidden");
+  }
 }
 
 function showError(message) {

@@ -35,6 +35,8 @@ GitHub Pages) bei jedem Push auf `main`. Einmalig in den Repo-Settings unter
 - Die 4 quest-basierten Shards (#10, #18, #19, #20) werden über
   `playerData.QuestCompletionData` gematcht — sollte ein Name nicht exakt
   stimmen, einfach in `data/mask-shards.js` den `detect.flag`-Wert anpassen.
-- Die MapGenie-Links öffnen die allgemeine Silksong-Karte mit einem
-  Best-Effort-Suchbegriff (`?search=...`); MapGenie veröffentlicht kein
-  dokumentiertes Deep-Link-Schema pro Pin.
+- Die "View Map"-Links springen per `?locationIds=<markerId>` direkt zum
+  jeweiligen Pin auf der MapGenie-Pharloom-Karte. Zusätzlich gibt es einen
+  Sammel-Link, der alle noch fehlenden Shards gleichzeitig auf der Karte
+  markiert. Die Marker-IDs stammen aus dem öffentlichen
+  silksong-completion-analyzer-Projekt.
