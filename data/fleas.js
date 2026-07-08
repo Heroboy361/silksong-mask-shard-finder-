@@ -1,3 +1,7 @@
+// Data for all 30 Lost Flea locations in Hollow Knight: Silksong.
+// See data/mask-shards.js for the `detect` schema. `description` is
+// bilingual: { en, de }.
+
 const FLEAS = [
   {
     id: "flea-1",
@@ -6,7 +10,7 @@ const FLEAS = [
     act: 1,
     area: "The Marrow",
     name: "Lost Flea 1",
-    description: "Save-Flag: SavedFlea_Bone_06.",
+    description: { en: "Save flag: SavedFlea_Bone_06.", de: "Save-Flag: SavedFlea_Bone_06." },
     detect: { type: "flag", flag: "SavedFlea_Bone_06" },
   },
   {
@@ -16,7 +20,7 @@ const FLEAS = [
     act: 1,
     area: "Deep Docks",
     name: "Lost Flea 2",
-    description: "Save-Flag: SavedFlea_Dock_16.",
+    description: { en: "Save flag: SavedFlea_Dock_16.", de: "Save-Flag: SavedFlea_Dock_16." },
     detect: { type: "flag", flag: "SavedFlea_Dock_16" },
   },
   {
@@ -26,7 +30,7 @@ const FLEAS = [
     act: 1,
     area: "Far Fields",
     name: "Lost Flea 3",
-    description: "Save-Flag: SavedFlea_Bone_East_05. Benötigt: Swift Step.",
+    description: { en: "Save flag: SavedFlea_Bone_East_05. Requires: Swift Step.", de: "Save-Flag: SavedFlea_Bone_East_05. Benötigt: Swift Step." },
     detect: { type: "flag", flag: "SavedFlea_Bone_East_05" },
   },
   {
@@ -36,7 +40,7 @@ const FLEAS = [
     act: 1,
     area: "Far Fields",
     name: "Lost Flea 4",
-    description: "Save-Flag: SavedFlea_Bone_East_17b.",
+    description: { en: "Save flag: SavedFlea_Bone_East_17b.", de: "Save-Flag: SavedFlea_Bone_East_17b." },
     detect: { type: "flag", flag: "SavedFlea_Bone_East_17b" },
   },
   {
@@ -46,7 +50,7 @@ const FLEAS = [
     act: 1,
     area: "Hunter's March",
     name: "Lost Flea 5",
-    description: "Save-Flag: SavedFlea_Ant_03.",
+    description: { en: "Save flag: SavedFlea_Ant_03.", de: "Save-Flag: SavedFlea_Ant_03." },
     detect: { type: "flag", flag: "SavedFlea_Ant_03" },
   },
   {
@@ -56,7 +60,7 @@ const FLEAS = [
     act: 1,
     area: "Greymoor",
     name: "Lost Flea 6",
-    description: "Save-Flag: SavedFlea_Greymoor_15b.",
+    description: { en: "Save flag: SavedFlea_Greymoor_15b.", de: "Save-Flag: SavedFlea_Greymoor_15b." },
     detect: { type: "flag", flag: "SavedFlea_Greymoor_15b" },
   },
   {
@@ -66,7 +70,7 @@ const FLEAS = [
     act: 1,
     area: "Greymoor",
     name: "Lost Flea 7",
-    description: "Save-Flag: SavedFlea_Greymoor_06.",
+    description: { en: "Save flag: SavedFlea_Greymoor_06.", de: "Save-Flag: SavedFlea_Greymoor_06." },
     detect: { type: "flag", flag: "SavedFlea_Greymoor_06" },
   },
   {
@@ -76,7 +80,7 @@ const FLEAS = [
     act: 1,
     area: "Shellwood",
     name: "Lost Flea 8",
-    description: "Save-Flag: SavedFlea_Shellwood_03.",
+    description: { en: "Save flag: SavedFlea_Shellwood_03.", de: "Save-Flag: SavedFlea_Shellwood_03." },
     detect: { type: "flag", flag: "SavedFlea_Shellwood_03" },
   },
   {
@@ -86,7 +90,7 @@ const FLEAS = [
     act: 1,
     area: "Far Fields",
     name: "Lost Flea 9",
-    description: "Save-Flag: SavedFlea_Bone_East_10_Church. Benötigt: Cling Grip.",
+    description: { en: "Save flag: SavedFlea_Bone_East_10_Church. Requires: Cling Grip.", de: "Save-Flag: SavedFlea_Bone_East_10_Church. Benötigt: Cling Grip." },
     detect: { type: "flag", flag: "SavedFlea_Bone_East_10_Church" },
   },
   {
@@ -96,7 +100,7 @@ const FLEAS = [
     act: 1,
     area: "Blasted Steps",
     name: "Lost Flea 10",
-    description: "Save-Flag: SavedFlea_Coral_35.",
+    description: { en: "Save flag: SavedFlea_Coral_35.", de: "Save-Flag: SavedFlea_Coral_35." },
     detect: { type: "flag", flag: "SavedFlea_Coral_35" },
   },
   {
@@ -106,7 +110,7 @@ const FLEAS = [
     act: 1,
     area: "Sinner's Road",
     name: "Lost Flea 11",
-    description: "Save-Flag: SavedFlea_Dust_12.",
+    description: { en: "Save flag: SavedFlea_Dust_12.", de: "Save-Flag: SavedFlea_Dust_12." },
     detect: { type: "flag", flag: "SavedFlea_Dust_12" },
   },
   {
@@ -116,7 +120,7 @@ const FLEAS = [
     act: 1,
     area: "Sinner's Road",
     name: "Lost Flea 12",
-    description: "Save-Flag: SavedFlea_Dust_09.",
+    description: { en: "Save flag: SavedFlea_Dust_09.", de: "Save-Flag: SavedFlea_Dust_09." },
     detect: { type: "flag", flag: "SavedFlea_Dust_09" },
   },
   {
@@ -126,7 +130,7 @@ const FLEAS = [
     act: 1,
     area: "Bellhart",
     name: "Lost Flea 13",
-    description: "Save-Flag: SavedFlea_Belltown_04. Benötigt: Cling Grip.",
+    description: { en: "Save flag: SavedFlea_Belltown_04. Requires: Cling Grip.", de: "Save-Flag: SavedFlea_Belltown_04. Benötigt: Cling Grip." },
     detect: { type: "flag", flag: "SavedFlea_Belltown_04" },
   },
   {
@@ -136,7 +140,7 @@ const FLEAS = [
     act: 1,
     area: "Wormways",
     name: "Lost Flea 14",
-    description: "Save-Flag: SavedFlea_Crawl_06.",
+    description: { en: "Save flag: SavedFlea_Crawl_06.", de: "Save-Flag: SavedFlea_Crawl_06." },
     detect: { type: "flag", flag: "SavedFlea_Crawl_06" },
   },
   {
@@ -146,7 +150,7 @@ const FLEAS = [
     act: 1,
     area: "The Slab",
     name: "Lost Flea 15",
-    description: "Save-Flag: SavedFlea_Slab_Cell. Benötigt: Key of Indolent.",
+    description: { en: "Save flag: SavedFlea_Slab_Cell. Requires: Key of Indolent.", de: "Save-Flag: SavedFlea_Slab_Cell. Benötigt: Key of Indolent." },
     detect: { type: "flag", flag: "SavedFlea_Slab_Cell" },
   },
   {
@@ -156,7 +160,7 @@ const FLEAS = [
     act: 1,
     area: "Bilewater",
     name: "Lost Flea 16",
-    description: "Save-Flag: SavedFlea_Shadow_28.",
+    description: { en: "Save flag: SavedFlea_Shadow_28.", de: "Save-Flag: SavedFlea_Shadow_28." },
     detect: { type: "flag", flag: "SavedFlea_Shadow_28" },
   },
   {
@@ -166,7 +170,7 @@ const FLEAS = [
     act: 1,
     area: "Deep Docks",
     name: "Lost Flea 17",
-    description: "Save-Flag: SavedFlea_Dock_03d. Benötigt: Clawline.",
+    description: { en: "Save flag: SavedFlea_Dock_03d. Requires: Clawline.", de: "Save-Flag: SavedFlea_Dock_03d. Benötigt: Clawline." },
     detect: { type: "flag", flag: "SavedFlea_Dock_03d" },
   },
   {
@@ -176,7 +180,7 @@ const FLEAS = [
     act: 1,
     area: "Underworks",
     name: "Lost Flea 18",
-    description: "Save-Flag: SavedFlea_Under_23.",
+    description: { en: "Save flag: SavedFlea_Under_23.", de: "Save-Flag: SavedFlea_Under_23." },
     detect: { type: "flag", flag: "SavedFlea_Under_23" },
   },
   {
@@ -186,7 +190,7 @@ const FLEAS = [
     act: 1,
     area: "Bilewater",
     name: "Lost Flea 19",
-    description: "Save-Flag: SavedFlea_Shadow_10.",
+    description: { en: "Save flag: SavedFlea_Shadow_10.", de: "Save-Flag: SavedFlea_Shadow_10." },
     detect: { type: "flag", flag: "SavedFlea_Shadow_10" },
   },
   {
@@ -196,7 +200,7 @@ const FLEAS = [
     act: 2,
     area: "Cogwork Core / Songclave",
     name: "Lost Flea 20",
-    description: "Save-Flag: SavedFlea_Song_14.",
+    description: { en: "Save flag: SavedFlea_Song_14.", de: "Save-Flag: SavedFlea_Song_14." },
     detect: { type: "flag", flag: "SavedFlea_Song_14" },
   },
   {
@@ -206,7 +210,7 @@ const FLEAS = [
     act: 1,
     area: "Blasted Steps",
     name: "Lost Flea 21",
-    description: "Save-Flag: SavedFlea_Coral_24. Benötigt: Cling Grip.",
+    description: { en: "Save flag: SavedFlea_Coral_24. Requires: Cling Grip.", de: "Save-Flag: SavedFlea_Coral_24. Benötigt: Cling Grip." },
     detect: { type: "flag", flag: "SavedFlea_Coral_24" },
   },
   {
@@ -216,7 +220,7 @@ const FLEAS = [
     act: 1,
     area: "Mount Fay",
     name: "Lost Flea 22",
-    description: "Save-Flag: SavedFlea_Peak_05c. Benötigt: Cling Grip.",
+    description: { en: "Save flag: SavedFlea_Peak_05c. Requires: Cling Grip.", de: "Save-Flag: SavedFlea_Peak_05c. Benötigt: Cling Grip." },
     detect: { type: "flag", flag: "SavedFlea_Peak_05c" },
   },
   {
@@ -226,7 +230,7 @@ const FLEAS = [
     act: 2,
     area: "Caravan (Kratt)",
     name: "Lost Flea 23 (Kratt)",
-    description: "Save-Flag: CaravanLechSaved.",
+    description: { en: "Save flag: CaravanLechSaved.", de: "Save-Flag: CaravanLechSaved." },
     detect: { type: "flag", flag: "CaravanLechSaved" },
   },
   {
@@ -236,7 +240,7 @@ const FLEAS = [
     act: 2,
     area: "Whispering Vaults",
     name: "Lost Flea 24",
-    description: "Save-Flag: SavedFlea_Library_09. Benötigt: Clawline.",
+    description: { en: "Save flag: SavedFlea_Library_09. Requires: Clawline.", de: "Save-Flag: SavedFlea_Library_09. Benötigt: Clawline." },
     detect: { type: "flag", flag: "SavedFlea_Library_09" },
   },
   {
@@ -246,7 +250,7 @@ const FLEAS = [
     act: 2,
     area: "Cogwork Core / Songclave",
     name: "Lost Flea 25",
-    description: "Save-Flag: SavedFlea_Song_11.",
+    description: { en: "Save flag: SavedFlea_Song_11.", de: "Save-Flag: SavedFlea_Song_11." },
     detect: { type: "flag", flag: "SavedFlea_Song_11" },
   },
   {
@@ -256,7 +260,7 @@ const FLEAS = [
     act: 2,
     area: "Whispering Vaults",
     name: "Lost Flea 26",
-    description: "Save-Flag: SavedFlea_Library_01. Benötigt: Clawline.",
+    description: { en: "Save flag: SavedFlea_Library_01. Requires: Clawline.", de: "Save-Flag: SavedFlea_Library_01. Benötigt: Clawline." },
     detect: { type: "flag", flag: "SavedFlea_Library_01" },
   },
   {
@@ -266,7 +270,7 @@ const FLEAS = [
     act: 2,
     area: "Underworks",
     name: "Lost Flea 27",
-    description: "Save-Flag: SavedFlea_Under_21.",
+    description: { en: "Save flag: SavedFlea_Under_21.", de: "Save-Flag: SavedFlea_Under_21." },
     detect: { type: "flag", flag: "SavedFlea_Under_21" },
   },
   {
@@ -276,7 +280,7 @@ const FLEAS = [
     act: 2,
     area: "The Slab",
     name: "Lost Flea 28",
-    description: "Save-Flag: SavedFlea_Slab_06. Benötigt: Faydown Cloak.",
+    description: { en: "Save flag: SavedFlea_Slab_06. Requires: Faydown Cloak.", de: "Save-Flag: SavedFlea_Slab_06. Benötigt: Faydown Cloak." },
     detect: { type: "flag", flag: "SavedFlea_Slab_06" },
   },
   {
@@ -286,7 +290,7 @@ const FLEAS = [
     act: 2,
     area: "Bellhart",
     name: "Lost Flea 29 (Giant Flea)",
-    description: "Save-Flag: tamedGiantFlea.",
+    description: { en: "Save flag: tamedGiantFlea.", de: "Save-Flag: tamedGiantFlea." },
     detect: { type: "flag", flag: "tamedGiantFlea" },
   },
   {
@@ -296,7 +300,7 @@ const FLEAS = [
     act: 2,
     area: "Grand Gate (Vog)",
     name: "Lost Flea 30 (Vog)",
-    description: "Save-Flag: MetTroupeHunterWild.",
+    description: { en: "Save flag: MetTroupeHunterWild.", de: "Save-Flag: MetTroupeHunterWild." },
     detect: { type: "flag", flag: "MetTroupeHunterWild" },
   },
 ];
