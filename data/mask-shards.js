@@ -13,6 +13,9 @@
 // mapgenie.io/hollow-knight-silksong/maps/pharloom?locationIds=<id> jumps
 // straight to that pin. mapSearch is kept as a search-box fallback for any
 // entry that ever loses its id.
+//
+// `description` is bilingual: { en, de }. `area` and `name` are location
+// names and are kept as-is in both languages.
 const MASK_SHARDS = [
   {
     id: "mask-shard-1",
@@ -21,8 +24,7 @@ const MASK_SHARDS = [
     act: 1,
     area: "Bone Bottom",
     name: "Bone Bottom – Pebb's Shop",
-    description:
-      "Bought from Pebb for 300 Rosaries. If not purchased before Act 3 begins, it moves to Grindle's shop in Blasted Steps for 320 Rosaries.",
+    description: { en: "Bought from Pebb for 300 Rosaries. If not purchased before Act 3 begins, it moves to Grindle's shop in Blasted Steps for 320 Rosaries.", de: "Wird bei Pebb für 300 Rosenkränze gekauft. Falls nicht vor Beginn von Akt 3 gekauft, wandert er zu Grindles Laden in Blasted Steps für 320 Rosenkränze." },
     detect: { type: "flag", flag: "PurchasedBonebottomHeartPiece" },
     mapSearch: "Bone Bottom",
   },
@@ -33,8 +35,7 @@ const MASK_SHARDS = [
     act: 1,
     area: "Wormways",
     name: "Wormways – Lower Passage",
-    description:
-      "In lower Wormways, accessed through Mosshome. Behind a breakable wall, just before the door requiring a Simple Key.",
+    description: { en: "In lower Wormways, accessed through Mosshome. Behind a breakable wall, just before the door requiring a Simple Key.", de: "Im unteren Wormways, erreichbar über Mosshome. Hinter einer zerstörbaren Wand, kurz vor der Tür, die einen einfachen Schlüssel benötigt." },
     detect: { type: "sceneBool", scene: "Crawl_02", flag: "Heart Piece" },
     mapSearch: "Wormways",
   },
@@ -45,8 +46,7 @@ const MASK_SHARDS = [
     act: 1,
     area: "The Marrow / Deep Docks",
     name: "The Marrow – Deep Docks Passage",
-    description:
-      "In a passageway between The Marrow and Deep Docks, accessed from The Marrow. Cling Grip recommended.",
+    description: { en: "In a passageway between The Marrow and Deep Docks, accessed from The Marrow. Cling Grip recommended.", de: "In einem Durchgang zwischen The Marrow und Deep Docks, erreichbar von The Marrow aus. Cling Grip empfohlen." },
     detect: { type: "sceneBool", scene: "Dock_08", flag: "Heart Piece" },
     mapSearch: "The Marrow",
   },
@@ -57,8 +57,7 @@ const MASK_SHARDS = [
     act: 1,
     area: "Far Fields",
     name: "Far Fields – Above Seamstress's Home",
-    description:
-      "In the area above the Seamstress's home in Far Fields. Requires the Drifter's Cloak.",
+    description: { en: "In the area above the Seamstress's home in Far Fields. Requires the Drifter's Cloak.", de: "Im Bereich über dem Haus der Seamstress in Far Fields. Benötigt den Drifter's Cloak." },
     detect: { type: "sceneBool", scene: "Bone_East_20", flag: "Heart Piece" },
     mapSearch: "Far Fields",
   },
@@ -69,8 +68,7 @@ const MASK_SHARDS = [
     act: 1,
     area: "Shellwood",
     name: "Shellwood – Platforming Challenge",
-    description:
-      "In the centre of Shellwood, at the end of a platforming challenge behind a breakable wall.",
+    description: { en: "In the centre of Shellwood, at the end of a platforming challenge behind a breakable wall.", de: "In der Mitte von Shellwood, am Ende einer Sprung-Herausforderung hinter einer zerstörbaren Wand." },
     detect: { type: "sceneBool", scene: "Shellwood_14", flag: "Heart Piece" },
     mapSearch: "Shellwood",
   },
@@ -81,8 +79,7 @@ const MASK_SHARDS = [
     act: 1,
     area: "Weavenest Atla",
     name: "Weavenest Atla – East Wall",
-    description:
-      "In east Weavenest Atla, behind a breakable wall. Requires Cling Grip.",
+    description: { en: "In east Weavenest Atla, behind a breakable wall. Requires Cling Grip.", de: "Im Osten von Weavenest Atla, hinter einer zerstörbaren Wand. Benötigt Cling Grip." },
     detect: { type: "sceneBool", scene: "Weave_05b", flag: "Heart Piece" },
     mapSearch: "Weavenest Atla",
   },
@@ -93,8 +90,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "Songclave",
     name: "Songclave – Jubilana's Shop",
-    description:
-      "Sold by Jubilana in Songclave for 750 Rosaries after completing the Wandering Merchant wish.",
+    description: { en: "Sold by Jubilana in Songclave for 750 Rosaries after completing the Wandering Merchant wish.", de: "Wird von Jubilana in Songclave für 750 Rosenkränze verkauft, nachdem der Wunsch „Wandering Merchant“ erfüllt wurde." },
     detect: { type: "flag", flag: "MerchantEnclaveShellFragment" },
     mapSearch: "Songclave",
   },
@@ -105,8 +101,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "Cogwork Core",
     name: "Cogwork Core – West Gauntlet",
-    description:
-      "In west Cogwork Core, past an enemy gauntlet accessible after defeating the Cogwork Dancers.",
+    description: { en: "In west Cogwork Core, past an enemy gauntlet accessible after defeating the Cogwork Dancers.", de: "Im Westen von Cogwork Core, hinter einem Gegner-Gauntlet, erreichbar nach dem Besiegen der Cogwork Dancers." },
     detect: { type: "sceneBool", scene: "Song_09", flag: "Heart Piece" },
     mapSearch: "Cogwork Core",
   },
@@ -117,8 +112,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "Whispering Vaults",
     name: "Whispering Vaults – Box Puzzle",
-    description:
-      "Behind a moving box puzzle in central Whispering Vaults.",
+    description: { en: "Behind a moving box puzzle in central Whispering Vaults.", de: "Hinter einem beweglichen Kisten-Rätsel im Zentrum von Whispering Vaults." },
     detect: { type: "sceneBool", scene: "Library_05", flag: "Heart Piece" },
     mapSearch: "Whispering Vaults",
   },
@@ -129,8 +123,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "Hunter's March / Songclave",
     name: "Savage Beastfly Grand Hunt Reward",
-    description:
-      "Reward for the Savage Beastfly wish: defeat the Fourth Chorus and Savage Beastfly in Hunter's March, then return to Songclave.",
+    description: { en: "Reward for the Savage Beastfly wish: defeat the Fourth Chorus and Savage Beastfly in Hunter's March, then return to Songclave.", de: "Belohnung für den Wunsch „Savage Beastfly“: besiege den Fourth Chorus und die Savage Beastfly in Hunter's March und kehre dann nach Songclave zurück." },
     detect: { type: "quest", flag: "Beastfly Hunt" },
     mapSearch: "Hunter's March",
   },
@@ -141,13 +134,8 @@ const MASK_SHARDS = [
     act: 2,
     area: "Far Fields",
     name: "Far Fields – East Bone Building",
-    description:
-      "Inside a bone building in east Far Fields. Requires Clawline and the Drifter's Cloak.",
-    detect: {
-      type: "sceneBool",
-      scene: "Bone_East_LavaChallenge",
-      flag: "Heart Piece (1)",
-    },
+    description: { en: "Inside a bone building in east Far Fields. Requires Clawline and the Drifter's Cloak.", de: "In einem Knochengebäude im Osten von Far Fields. Benötigt Clawline und den Drifter's Cloak." },
+    detect: { type: "sceneBool", scene: "Bone_East_LavaChallenge", flag: "Heart Piece (1)" },
     mapSearch: "Far Fields",
   },
   {
@@ -157,8 +145,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "Mount Fay",
     name: "Mount Fay – Southwest of the Bench",
-    description:
-      "In southwest Mount Fay, west of the bench. Requires the Faydown Cloak.",
+    description: { en: "In southwest Mount Fay, west of the bench. Requires the Faydown Cloak.", de: "Im Südwesten von Mount Fay, westlich der Bank. Benötigt den Faydown Cloak." },
     detect: { type: "sceneBool", scene: "Peak_04c", flag: "Heart Piece" },
     mapSearch: "Mount Fay",
   },
@@ -169,8 +156,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "The Slab",
     name: "The Slab – Northeast Cell",
-    description:
-      "In the northeast part of The Slab. Requires the Key of Apostate and the Faydown Cloak (the challenge can be skipped with Silk Soar).",
+    description: { en: "In the northeast part of The Slab. Requires the Key of Apostate and the Faydown Cloak (the challenge can be skipped with Silk Soar).", de: "Im Nordosten von The Slab. Benötigt den Key of Apostate und den Faydown Cloak (die Herausforderung kann mit Silk Soar übersprungen werden)." },
     detect: { type: "sceneBool", scene: "Slab_17", flag: "Heart Piece" },
     mapSearch: "The Slab",
   },
@@ -181,7 +167,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "Bilewater",
     name: "Bilewater – Slubberlug Hallway",
-    description: "In east Bilewater, in a hallway filled with Slubberlugs.",
+    description: { en: "In east Bilewater, in a hallway filled with Slubberlugs.", de: "Im Osten von Bilewater, in einem Gang voller Slubberlugs." },
     detect: { type: "sceneBool", scene: "Shadow_13", flag: "Heart Piece" },
     mapSearch: "Bilewater",
   },
@@ -192,7 +178,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "Wisp Thicket",
     name: "Wisp Thicket – East Nook",
-    description: "In east Wisp Thicket. Requires the Faydown Cloak.",
+    description: { en: "In east Wisp Thicket. Requires the Faydown Cloak.", de: "Im Osten von Wisp Thicket. Benötigt den Faydown Cloak." },
     detect: { type: "sceneBool", scene: "Wisp_07", flag: "Heart Piece" },
     mapSearch: "Wisp Thicket",
   },
@@ -203,8 +189,7 @@ const MASK_SHARDS = [
     act: 2,
     area: "Blasted Steps",
     name: "Blasted Steps – West Challenge",
-    description:
-      "In west Blasted Steps. Requires Clawline and the Faydown Cloak (the challenge can be skipped with Silk Soar).",
+    description: { en: "In west Blasted Steps. Requires Clawline and the Faydown Cloak (the challenge can be skipped with Silk Soar).", de: "Im Westen von Blasted Steps. Benötigt Clawline und den Faydown Cloak (die Herausforderung kann mit Silk Soar übersprungen werden)." },
     detect: { type: "sceneBool", scene: "Coral_19b", flag: "Heart Piece" },
     mapSearch: "Blasted Steps",
   },
@@ -215,7 +200,7 @@ const MASK_SHARDS = [
     act: 3,
     area: "Brightvein",
     name: "Brightvein – Silk Soar Ledge",
-    description: "In Brightvein. Requires Silk Soar.",
+    description: { en: "In Brightvein. Requires Silk Soar.", de: "In Brightvein. Benötigt Silk Soar." },
     detect: { type: "sceneBool", scene: "Peak_06", flag: "Heart Piece" },
     mapSearch: "Brightvein",
   },
@@ -226,8 +211,7 @@ const MASK_SHARDS = [
     act: 3,
     area: "Far Fields",
     name: "Sprintmaster's Fastest in Pharloom Reward",
-    description:
-      "In east Far Fields. Reward from the Sprintmaster's Fastest in Pharloom wish.",
+    description: { en: "In east Far Fields. Reward from the Sprintmaster's Fastest in Pharloom wish.", de: "Im Osten von Far Fields. Belohnung aus dem Wunsch „Fastest in Pharloom“ des Sprintmasters." },
     detect: { type: "quest", flag: "Sprintmaster Race" },
     mapSearch: "Far Fields",
   },
@@ -238,7 +222,7 @@ const MASK_SHARDS = [
     act: 3,
     area: "Bellhart",
     name: "Bellhart Wishwall – Dark Hearts Reward",
-    description: "In the Bellhart Wishwall. Reward from the Dark Hearts wish.",
+    description: { en: "In the Bellhart Wishwall. Reward from the Dark Hearts wish.", de: "An der Bellhart Wishwall. Belohnung aus dem Wunsch „Dark Hearts“." },
     detect: { type: "quest", flag: "Destroy Thread Cores" },
     mapSearch: "Bellhart",
   },
@@ -249,8 +233,7 @@ const MASK_SHARDS = [
     act: 3,
     area: "Bellhart",
     name: "Bellhart Wishwall – The Hidden Hunter Reward",
-    description:
-      "In the Bellhart Wishwall. Reward from The Hidden Hunter wish.",
+    description: { en: "In the Bellhart Wishwall. Reward from The Hidden Hunter wish.", de: "An der Bellhart Wishwall. Belohnung aus dem Wunsch „The Hidden Hunter“." },
     detect: { type: "quest", flag: "Ant Trapper" },
     mapSearch: "Bellhart",
   },

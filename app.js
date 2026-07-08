@@ -136,11 +136,12 @@ function mapGenieMissingUrl(results) {
   return `${MAPGENIE_BASE_URL}?locationIds=${missingIds.join(",")}`;
 }
 
-// The three collectible categories, each with its own dataset and label.
+// The three collectible categories, each with its own dataset. Labels come
+// from the active translation (see i18n.js) so they switch with the language.
 const CATEGORIES = [
-  { id: "mask-shards", label: "Mask Shards", items: MASK_SHARDS },
-  { id: "fleas", label: "Lost Fleas", items: FLEAS },
-  { id: "spool-fragments", label: "Spool Fragments", items: SPOOL_FRAGMENTS },
+  { id: "mask-shards", items: MASK_SHARDS },
+  { id: "fleas", items: FLEAS },
+  { id: "spool-fragments", items: SPOOL_FRAGMENTS },
 ];
 
 // Parsed save state, kept so switching category tabs re-renders without a
@@ -156,7 +157,15 @@ function computeResults(category) {
   }));
 }
 
+function itemDescription(item) {
+  const lang = getLang();
+  return typeof item.description === "object"
+    ? item.description[lang] || item.description.en
+    : item.description;
+}
+
 function renderTable(results) {
+  const strings = t();
   const tbody = document.querySelector("#shard-table tbody");
   tbody.innerHTML = "";
 
@@ -166,19 +175,19 @@ function renderTable(results) {
 
     tr.innerHTML = `
       <td class="col-num">${item.number}</td>
-      <td class="col-act">Act ${item.act}</td>
+      <td class="col-act">${strings.tableHeaders.act} ${item.act}</td>
       <td class="col-area">${item.area}</td>
       <td class="col-name">
         <div class="shard-name">${item.name}</div>
-        <div class="shard-desc">${item.description}</div>
+        <div class="shard-desc">${itemDescription(item)}</div>
       </td>
       <td class="col-status">
         <span class="status-badge ${collected ? "status-found" : "status-missing"}">
-          ${collected ? "✔ Found" : "✘ Not Found"}
+          ${collected ? strings.statusFound : strings.statusMissing}
         </span>
       </td>
       <td class="col-map">
-        <a class="map-link" href="${mapGenieUrl(item)}" target="_blank" rel="noopener noreferrer">View Map</a>
+        <a class="map-link" href="${mapGenieUrl(item)}" target="_blank" rel="noopener noreferrer">${strings.mapLink}</a>
       </td>
     `;
     tbody.appendChild(tr);
@@ -186,14 +195,19 @@ function renderTable(results) {
 }
 
 function renderSummary(results, category) {
+  const strings = t();
   const found = results.filter((r) => r.collected).length;
   const total = results.length;
-  document.querySelector("#summary").textContent =
-    `${found} / ${total} ${category.label} found`;
+  document.querySelector("#summary").textContent = strings.summary(
+    found,
+    total,
+    strings.categories[category.id],
+  );
   document.querySelector("#progress-bar-fill").style.width =
     total === 0 ? "0%" : `${(found / total) * 100}%`;
 
   const missingLink = document.querySelector("#missing-map-link");
+  missingLink.textContent = strings.missingMapLink;
   const missingUrl = mapGenieMissingUrl(results);
   if (missingUrl) {
     missingLink.href = missingUrl;
@@ -217,6 +231,7 @@ function renderActiveCategory() {
 }
 
 function renderCategoryTabs() {
+  const strings = t();
   const container = document.querySelector("#category-tabs");
   container.innerHTML = "";
   for (const category of CATEGORIES) {
@@ -224,13 +239,42 @@ function renderCategoryTabs() {
     button.type = "button";
     button.className = "category-tab";
     button.dataset.category = category.id;
-    button.textContent = category.label;
+    button.textContent = strings.categories[category.id];
     button.addEventListener("click", () => {
       activeCategoryId = category.id;
       renderActiveCategory();
     });
     container.appendChild(button);
   }
+}
+
+function renderStaticText() {
+  const strings = t();
+  document.documentElement.lang = getLang();
+
+  document.querySelector("#subtitle").textContent = strings.subtitle;
+  document.querySelector("#file-info-heading").textContent = strings.fileInfoHeading;
+  document.querySelector("#file-info-p1").innerHTML = strings.fileInfoP1Html;
+  document.querySelector("#file-info-hint").innerHTML = strings.fileInfoHintHtml;
+  document.querySelector("#dropzone-text").innerHTML = strings.dropzoneHtml;
+  document.querySelector("#footer-text").innerHTML = strings.footerHtml;
+
+  document.querySelector(".th-num").textContent = strings.tableHeaders.num;
+  document.querySelector(".th-act").textContent = strings.tableHeaders.act;
+  document.querySelector(".th-area").textContent = strings.tableHeaders.area;
+  document.querySelector(".th-location").textContent = strings.tableHeaders.location;
+  document.querySelector(".th-status").textContent = strings.tableHeaders.status;
+  document.querySelector(".th-map").textContent = strings.tableHeaders.map;
+
+  for (const button of document.querySelectorAll(".lang-btn")) {
+    button.classList.toggle("active", button.dataset.lang === getLang());
+  }
+}
+
+function applyLanguage() {
+  renderStaticText();
+  renderCategoryTabs();
+  renderActiveCategory();
 }
 
 function showError(message) {
@@ -268,10 +312,7 @@ async function handleFile(file) {
     document.querySelector("#results").classList.remove("hidden");
   } catch (error) {
     console.error(error);
-    showError(
-      "Could not read this save file. Make sure you selected a Silksong " +
-        "user#.dat file (or its decrypted JSON) and try again.",
-    );
+    showError(t().errorMessage);
     document.querySelector("#results").classList.add("hidden");
   }
 }
@@ -280,7 +321,14 @@ function init() {
   const input = document.querySelector("#file-input");
   const dropzone = document.querySelector("#dropzone");
 
-  renderCategoryTabs();
+  applyLanguage();
+
+  for (const button of document.querySelectorAll(".lang-btn")) {
+    button.addEventListener("click", () => {
+      setLang(button.dataset.lang);
+      applyLanguage();
+    });
+  }
 
   input.addEventListener("change", () => {
     if (input.files[0]) handleFile(input.files[0]);

@@ -8,39 +8,27 @@
 </head>
 <body>
   <header>
+    <div id="lang-switch">
+      <button type="button" class="lang-btn" data-lang="de">DE</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
     <h1>Silksong Mask Shard Finder</h1>
-    <p class="subtitle">
-      Lade deinen Hollow Knight: Silksong Spielstand hoch und sieh sofort,
-      welche Maskenscherben (Mask Shards), Flöhe (Lost Fleas) und
-      Spulenfragmente (Spool Fragments) du schon gefunden hast — mit direktem
-      Link zur passenden Stelle auf der MapGenie-Karte.
-    </p>
+    <p class="subtitle" id="subtitle"></p>
   </header>
 
   <main>
     <section id="upload-section">
       <div id="file-info">
-        <h2>Welche Datei muss ich hochladen?</h2>
-        <p>
-          Deine Silksong-Spielstanddatei heißt normalerweise
-          <strong>user1.dat</strong> (bei mehreren Spielständen ggf.
-          <strong>user2.dat</strong>, <strong>user3.dat</strong>, …) und liegt
-          unter Windows/Steam hier:
-        </p>
+        <h2 id="file-info-heading"></h2>
+        <p id="file-info-p1"></p>
         <p class="filepath">
           <code>%userprofile%\AppData\LocalLow\Team Cherry\Hollow Knight Silksong\</code>
         </p>
-        <p class="hint">
-          Tipp: <kbd>Windows</kbd> + <kbd>R</kbd> drücken, obigen Pfad
-          einfügen und Enter drücken — dann öffnet sich der Ordner direkt.
-          Lade genau diese <strong>.dat</strong>-Datei unten hoch (kein
-          Umbenennen, kein Entpacken nötig). Die Datei verlässt deinen Browser
-          nie — die gesamte Auswertung läuft lokal auf deinem Gerät.
-        </p>
+        <p class="hint" id="file-info-hint"></p>
       </div>
 
       <div id="dropzone">
-        <p><strong>Spielstand (user1.dat) hierher ziehen</strong> oder klicken zum Auswählen</p>
+        <p id="dropzone-text"></p>
         <input type="file" id="file-input" accept=".dat,.json" hidden />
       </div>
       <p id="error-message" class="error hidden"></p>
@@ -54,20 +42,18 @@
         <div class="progress-bar">
           <div id="progress-bar-fill"></div>
         </div>
-        <a id="missing-map-link" class="map-link hidden" href="#" target="_blank" rel="noopener noreferrer">
-          Alle fehlenden auf der Karte zeigen
-        </a>
+        <a id="missing-map-link" class="map-link hidden" href="#" target="_blank" rel="noopener noreferrer"></a>
       </div>
 
       <table id="shard-table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Act</th>
-            <th>Area</th>
-            <th>Location</th>
-            <th>Status</th>
-            <th>Map</th>
+            <th class="th-num"></th>
+            <th class="th-act"></th>
+            <th class="th-area"></th>
+            <th class="th-location"></th>
+            <th class="th-status"></th>
+            <th class="th-map"></th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -76,14 +62,11 @@
   </main>
 
   <footer>
-    <p>
-      Fan-made tool, not affiliated with Team Cherry. Location data sourced
-      from public Silksong completion guides. Map links open
-      <a href="https://mapgenie.io/hollow-knight-silksong" target="_blank" rel="noopener noreferrer">MapGenie</a>.
-    </p>
+    <p id="footer-text"></p>
   </footer>
 
   <script src="vendor/crypto-js.min.js"></script>
+  <script src="i18n.js"></script>
   <script src="data/mask-shards.js"></script>
   <script src="data/fleas.js"></script>
   <script src="data/spool-fragments.js"></script>
